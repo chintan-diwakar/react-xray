@@ -1,0 +1,252 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`golden: next-app fixture full ScanResult 1`] = `
+{
+  "components": [
+    {
+      "blank": 0,
+      "comment": 0,
+      "detectedBy": "arrow",
+      "exportKind": "named",
+      "file": "[root]/src/components/DashboardCard.tsx",
+      "id": "[root]/src/components/DashboardCard.tsx#DashboardCard",
+      "isExternal": false,
+      "isPage": false,
+      "loc": 1,
+      "location": {
+        "column": 13,
+        "file": "[root]/src/components/DashboardCard.tsx",
+        "line": 1,
+      },
+      "name": "DashboardCard",
+    },
+    {
+      "blank": 0,
+      "comment": 0,
+      "detectedBy": "arrow",
+      "exportKind": "named",
+      "file": "[root]/src/components/Header.tsx",
+      "id": "[root]/src/components/Header.tsx#Header",
+      "isExternal": false,
+      "isPage": false,
+      "loc": 1,
+      "location": {
+        "column": 13,
+        "file": "[root]/src/components/Header.tsx",
+        "line": 2,
+      },
+      "name": "Header",
+    },
+    {
+      "blank": 0,
+      "comment": 0,
+      "detectedBy": "arrow",
+      "exportKind": "named",
+      "file": "[root]/src/components/Logo.tsx",
+      "id": "[root]/src/components/Logo.tsx#Logo",
+      "isExternal": false,
+      "isPage": false,
+      "loc": 1,
+      "location": {
+        "column": 13,
+        "file": "[root]/src/components/Logo.tsx",
+        "line": 1,
+      },
+      "name": "Logo",
+    },
+    {
+      "blank": 0,
+      "comment": 0,
+      "detectedBy": "arrow",
+      "exportKind": "named",
+      "file": "[root]/src/legacy/OldHeader.tsx",
+      "id": "[root]/src/legacy/OldHeader.tsx#OldHeader",
+      "isExternal": false,
+      "isPage": false,
+      "loc": 1,
+      "location": {
+        "column": 13,
+        "file": "[root]/src/legacy/OldHeader.tsx",
+        "line": 2,
+      },
+      "name": "OldHeader",
+    },
+    {
+      "blank": 0,
+      "comment": 0,
+      "detectedBy": "arrow",
+      "exportKind": "named",
+      "file": "[root]/src/legacy/OldLogo.tsx",
+      "id": "[root]/src/legacy/OldLogo.tsx#OldLogo",
+      "isExternal": false,
+      "isPage": false,
+      "loc": 1,
+      "location": {
+        "column": 13,
+        "file": "[root]/src/legacy/OldLogo.tsx",
+        "line": 1,
+      },
+      "name": "OldLogo",
+    },
+  ],
+  "externals": [],
+  "matrix": [
+    {
+      "directComponents": [
+        "[root]/src/components/DashboardCard.tsx#DashboardCard",
+        "[root]/src/components/Header.tsx#Header",
+      ],
+      "externalInstanceCount": 0,
+      "externalPackages": [],
+      "locReached": 11,
+      "pageId": "app/dashboard/page.tsx",
+      "pageRoute": "/dashboard",
+      "transitiveComponents": [
+        "[root]/src/components/DashboardCard.tsx#DashboardCard",
+        "[root]/src/components/Header.tsx#Header",
+        "[root]/src/components/Logo.tsx#Logo",
+      ],
+    },
+    {
+      "directComponents": [
+        "[root]/src/components/Header.tsx#Header",
+      ],
+      "externalInstanceCount": 0,
+      "externalPackages": [],
+      "locReached": 8,
+      "pageId": "app/page.tsx",
+      "pageRoute": "/",
+      "transitiveComponents": [
+        "[root]/src/components/Header.tsx#Header",
+        "[root]/src/components/Logo.tsx#Logo",
+      ],
+    },
+  ],
+  "meta": {
+    "durationMs": 0,
+    "fileCount": 8,
+    "framework": "next-app",
+    "rootDir": "[root]",
+    "scannedAt": "[ts]",
+    "version": "0.0.1",
+  },
+  "pages": [
+    {
+      "file": "[root]/app/dashboard/page.tsx",
+      "framework": "next-app",
+      "id": "app/dashboard/page.tsx",
+      "isSpecialFile": false,
+      "route": "/dashboard",
+    },
+    {
+      "file": "[root]/app/page.tsx",
+      "framework": "next-app",
+      "id": "app/page.tsx",
+      "isSpecialFile": false,
+      "route": "/",
+    },
+  ],
+  "stats": {
+    "byLanguage": {
+      "js": {
+        "blank": 1,
+        "code": 1,
+        "comment": 0,
+        "files": 1,
+        "lines": 2,
+      },
+      "jsx": {
+        "blank": 0,
+        "code": 0,
+        "comment": 0,
+        "files": 0,
+        "lines": 0,
+      },
+      "ts": {
+        "blank": 0,
+        "code": 0,
+        "comment": 0,
+        "files": 0,
+        "lines": 0,
+      },
+      "tsx": {
+        "blank": 7,
+        "code": 12,
+        "comment": 0,
+        "files": 7,
+        "lines": 19,
+      },
+    },
+    "perComponent": [
+      {
+        "blank": 0,
+        "comment": 0,
+        "id": "[root]/src/components/DashboardCard.tsx#DashboardCard",
+        "loc": 1,
+      },
+      {
+        "blank": 0,
+        "comment": 0,
+        "id": "[root]/src/components/Header.tsx#Header",
+        "loc": 1,
+      },
+      {
+        "blank": 0,
+        "comment": 0,
+        "id": "[root]/src/components/Logo.tsx#Logo",
+        "loc": 1,
+      },
+      {
+        "blank": 0,
+        "comment": 0,
+        "id": "[root]/src/legacy/OldHeader.tsx#OldHeader",
+        "loc": 1,
+      },
+      {
+        "blank": 0,
+        "comment": 0,
+        "id": "[root]/src/legacy/OldLogo.tsx#OldLogo",
+        "loc": 1,
+      },
+    ],
+    "totalBlankLOC": 8,
+    "totalCommentLOC": 0,
+    "totalLOC": 21,
+  },
+  "unused": {
+    "strictlyUnused": [
+      {
+        "file": "[root]/src/legacy/OldHeader.tsx",
+        "id": "[root]/src/legacy/OldHeader.tsx#OldHeader",
+        "loc": 1,
+        "name": "OldHeader",
+        "reasons": [
+          "no JSX usage in project",
+        ],
+      },
+    ],
+    "unreachable": [
+      {
+        "file": "[root]/src/legacy/OldHeader.tsx",
+        "id": "[root]/src/legacy/OldHeader.tsx#OldHeader",
+        "loc": 1,
+        "name": "OldHeader",
+        "reasons": [
+          "file not reached by BFS from any page",
+          "no JSX usage in project",
+        ],
+      },
+      {
+        "file": "[root]/src/legacy/OldLogo.tsx",
+        "id": "[root]/src/legacy/OldLogo.tsx#OldLogo",
+        "loc": 1,
+        "name": "OldLogo",
+        "reasons": [
+          "file not reached by BFS from any page",
+        ],
+      },
+    ],
+  },
+  "warnings": [],
+}
+`;
