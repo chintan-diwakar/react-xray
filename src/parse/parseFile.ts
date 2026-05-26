@@ -28,5 +28,13 @@ export async function parseFile(filename: string, code: string): Promise<AST> {
     );
   }
 
-  return result.program as unknown as AST;
+  const program = result.program as unknown as AST;
+  // oxc does not emit `loc` info; pre-compute line-start offsets so helpers
+  // can map a node's byte `start`/`end` to a 1-based line number.
+  const lineStarts: number[] = [0];
+  for (let i = 0; i < code.length; i++) {
+    if (code.charCodeAt(i) === 10 /* \n */) lineStarts.push(i + 1);
+  }
+  (program as { __lineStarts?: number[] }).__lineStarts = lineStarts;
+  return program;
 }
