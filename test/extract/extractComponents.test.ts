@@ -74,3 +74,27 @@ test("detects createIcon factory", async () => {
   `);
   expect(defs[0]?.name).toBe("Icon");
 });
+
+test("detects class component extending React.Component", async () => {
+  const defs = await components("C.tsx", `
+    import React from "react";
+    export class Foo extends React.Component { render() { return <div/>; } }
+  `);
+  expect(defs[0]?.name).toBe("Foo");
+  expect(defs[0]?.detectedBy).toBe("class");
+});
+
+test("detects default-export function with filename PascalCase", async () => {
+  const defs = await components("Foo.tsx", `
+    export default function() { return <div/>; }
+  `);
+  expect(defs[0]?.name).toBe("Foo");
+  expect(defs[0]?.exportKind).toBe("default");
+});
+
+test("detects default-export arrow with filename PascalCase", async () => {
+  const defs = await components("Bar.tsx", `
+    export default () => <div/>;
+  `);
+  expect(defs[0]?.name).toBe("Bar");
+});
