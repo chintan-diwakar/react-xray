@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo-wide.svg" alt="react-xray" width="600"/>
+  <img src="https://raw.githubusercontent.com/chintan-diwakar/react-xray/master/assets/logo-wide.svg" alt="react-xray" width="600"/>
 </p>
 
 <p align="center">
@@ -84,6 +84,16 @@ External usage   406 packages, 6332 instances
    LeadContactInfoComponent  src/components/lead-contact-info.tsx  18 LOC
    … 257 more — see report.html or report.json
 ```
+
+### Sample HTML report
+
+The `react-xray-report.html` is a single self-contained file — drop it in a PR. The "Unused (strictly)" section, for example, looks like this:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/chintan-diwakar/react-xray/master/assets/report-unused.png" alt="react-xray HTML report — Unused components section" width="900"/>
+</p>
+
+Component, file path, LOC, and the concrete `reasons[]` are listed for every flagged unused component — no opaque confidence scores.
 
 ### CLI flags
 
