@@ -67,7 +67,7 @@ export function htmlShell(opts: {
       function render(d){
         if(!d){document.getElementById("app").textContent="No data.";return;}
         var meta=document.getElementById("header-meta");
-        meta.innerHTML="<span class=pill+\" cyan\">"+esc(d.meta.framework)+"</span> &nbsp;"+esc(String(d.meta.fileCount))+" files &middot; "+(d.meta.durationMs/1000).toFixed(2)+"s";
+        meta.innerHTML='<span class="pill cyan">'+esc(d.meta.framework)+'</span> &nbsp;'+esc(String(d.meta.fileCount))+' files &middot; '+(d.meta.durationMs/1000).toFixed(2)+'s';
         var html="";
         html+="<p class=dim>"+esc(d.meta.rootDir)+"</p>";
 
