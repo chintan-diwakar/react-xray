@@ -7,7 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/react-xray"><img src="https://img.shields.io/npm/v/react-xray?color=22d3ee&label=npm" alt="npm"/></a>
+  <a href="https://www.npmjs.com/package/@chintandiwakar1/react-xray"><img src="https://img.shields.io/npm/v/@chintandiwakar1/react-xray?color=22d3ee&label=npm" alt="npm"/></a>
+  <a href="https://www.npmjs.com/package/@chintandiwakar1/react-xray"><img src="https://img.shields.io/npm/dm/@chintandiwakar1/react-xray?color=22d3ee&label=downloads" alt="downloads"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22d3ee" alt="license"/></a>
   <img src="https://img.shields.io/badge/node-%3E%3D18-22d3ee" alt="node"/>
   <img src="https://img.shields.io/badge/typescript-strict-22d3ee" alt="typescript"/>
@@ -33,12 +34,17 @@ react-xray combines page detection + file-graph reachability + render-aware usag
 ## Install
 
 ```bash
-npm install -g react-xray
-# or one-shot
-npx react-xray
+# one-shot run (no install)
+npx @chintandiwakar1/react-xray
+
+# or install globally
+npm install -g @chintandiwakar1/react-xray
+react-xray   # CLI command name stays react-xray
 ```
 
 Requires Node 18+. Works with TypeScript and JavaScript projects.
+
+> **Note on the package name:** the npm registry rejects the unscoped name `react-xray` because of an existing unrelated package `react-x-ray` (a CSS layout debugger). The tool is therefore published under the scope `@chintandiwakar1`. The CLI binary name, terminal banner, and HTML report branding all remain `react-xray`.
 
 ## Usage
 
