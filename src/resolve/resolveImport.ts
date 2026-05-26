@@ -36,17 +36,23 @@ export async function createResolver(rootDir: string): Promise<Resolver> {
       try {
         const result = factory.sync(dir, specifier);
         if (result.error || !result.path) {
+          // Bare specifiers that fail to resolve are still libraries — the package
+          // simply isn't installed locally. Treat as external so library-adoption
+          // tracking works on uninstalled projects.
+          if (isBareSpecifier(specifier)) {
+            return { kind: "external", package: packageNameFromBare(specifier) };
+          }
           return { kind: "unresolved", specifier };
         }
         const p = result.path;
         if (p.includes(`${sep}node_modules${sep}`)) {
-          const pkg = isBareSpecifier(specifier)
-            ? packageNameFromBare(specifier)
-            : packageNameFromBare(specifier);
-          return { kind: "external", package: pkg };
+          return { kind: "external", package: packageNameFromBare(specifier) };
         }
         return { kind: "internal", path: p };
       } catch {
+        if (isBareSpecifier(specifier)) {
+          return { kind: "external", package: packageNameFromBare(specifier) };
+        }
         return { kind: "unresolved", specifier };
       }
     },

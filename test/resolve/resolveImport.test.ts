@@ -20,9 +20,22 @@ test("resolves bare specifier to external package", async () => {
   if (target.kind === "external") expect(target.package).toBe("lib");
 });
 
-test("resolves scoped package", async () => {
+test("uninstalled scoped package still classified as external (library adoption keeps working without node_modules)", async () => {
   const r = await createResolver(root);
   const target = await r.resolve(resolve(root, "src/page.tsx"), "@scope/pkg");
-  // not installed → unresolved
+  expect(target.kind).toBe("external");
+  if (target.kind === "external") expect(target.package).toBe("@scope/pkg");
+});
+
+test("uninstalled bare specifier classified as external", async () => {
+  const r = await createResolver(root);
+  const target = await r.resolve(resolve(root, "src/page.tsx"), "react");
+  expect(target.kind).toBe("external");
+  if (target.kind === "external") expect(target.package).toBe("react");
+});
+
+test("unresolvable relative path stays unresolved", async () => {
+  const r = await createResolver(root);
+  const target = await r.resolve(resolve(root, "src/page.tsx"), "./nonexistent-file");
   expect(target.kind).toBe("unresolved");
 });
