@@ -1,5 +1,5 @@
 {
-  "name": "react-xray",
+  "name": "@chintandiwakar1/react-xray",
   "version": "0.0.1",
   "description": "Per-page component reachability for React apps",
   "type": "module",
