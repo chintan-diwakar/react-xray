@@ -35,8 +35,13 @@ export async function runScan(opts: RunScanOptions): Promise<ScanResult> {
   const t0 = Date.now();
   const config = await loadConfig(opts.rootDir, {});
 
-  const framework = await detectFramework(opts.rootDir);
-  const { pages, roots } = await collectPages(opts.rootDir, framework);
+  const { framework, appDir, pagesDir } = await detectFramework(opts.rootDir);
+  const { pages, roots } = await collectPages(
+    opts.rootDir,
+    framework,
+    appDir,
+    pagesDir,
+  );
   const sources = await collectSources(opts.rootDir, config.components);
 
   const cache = createCache();

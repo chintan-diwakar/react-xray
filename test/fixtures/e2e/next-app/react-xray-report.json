@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "version": "0.0.1",
+    "scannedAt": "2026-05-26T10:41:02.468Z",
+    "rootDir": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app",
+    "framework": "next-app",
+    "durationMs": 40,
+    "fileCount": 8
+  },
+  "pages": [
+    {
+      "id": "app/page.tsx",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/app/page.tsx",
+      "route": "/",
+      "framework": "next-app",
+      "isSpecialFile": false
+    },
+    {
+      "id": "app/dashboard/page.tsx",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/app/dashboard/page.tsx",
+      "route": "/dashboard",
+      "framework": "next-app",
+      "isSpecialFile": false
+    }
+  ],
+  "components": [
+    {
+      "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx#DashboardCard",
+      "name": "DashboardCard",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx",
+      "location": {
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx",
+        "line": 1,
+        "column": 13
+      },
+      "loc": 1,
+      "blank": 0,
+      "comment": 0,
+      "isPage": false,
+      "isExternal": false,
+      "exportKind": "named",
+      "detectedBy": "arrow"
+    },
+    {
+      "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header",
+      "name": "Header",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx",
+      "location": {
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx",
+        "line": 2,
+        "column": 13
+      },
+      "loc": 1,
+      "blank": 0,
+      "comment": 0,
+      "isPage": false,
+      "isExternal": false,
+      "exportKind": "named",
+      "detectedBy": "arrow"
+    },
+    {
+      "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx#Logo",
+      "name": "Logo",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx",
+      "location": {
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx",
+        "line": 1,
+        "column": 13
+      },
+      "loc": 1,
+      "blank": 0,
+      "comment": 0,
+      "isPage": false,
+      "isExternal": false,
+      "exportKind": "named",
+      "detectedBy": "arrow"
+    },
+    {
+      "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx#OldHeader",
+      "name": "OldHeader",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx",
+      "location": {
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx",
+        "line": 2,
+        "column": 13
+      },
+      "loc": 1,
+      "blank": 0,
+      "comment": 0,
+      "isPage": false,
+      "isExternal": false,
+      "exportKind": "named",
+      "detectedBy": "arrow"
+    },
+    {
+      "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx#OldLogo",
+      "name": "OldLogo",
+      "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx",
+      "location": {
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx",
+        "line": 1,
+        "column": 13
+      },
+      "loc": 1,
+      "blank": 0,
+      "comment": 0,
+      "isPage": false,
+      "isExternal": false,
+      "exportKind": "named",
+      "detectedBy": "arrow"
+    }
+  ],
+  "externals": [],
+  "matrix": [
+    {
+      "pageId": "app/page.tsx",
+      "pageRoute": "/",
+      "directComponents": [
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header"
+      ],
+      "transitiveComponents": [
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header",
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx#Logo"
+      ],
+      "externalPackages": [],
+      "externalInstanceCount": 0,
+      "locReached": 8
+    },
+    {
+      "pageId": "app/dashboard/page.tsx",
+      "pageRoute": "/dashboard",
+      "directComponents": [
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header",
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx#DashboardCard"
+      ],
+      "transitiveComponents": [
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header",
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx#DashboardCard",
+        "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx#Logo"
+      ],
+      "externalPackages": [],
+      "externalInstanceCount": 0,
+      "locReached": 11
+    }
+  ],
+  "unused": {
+    "strictlyUnused": [
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx#OldHeader",
+        "name": "OldHeader",
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx",
+        "loc": 1,
+        "reasons": [
+          "no JSX usage in project"
+        ]
+      }
+    ],
+    "unreachable": [
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx#OldHeader",
+        "name": "OldHeader",
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx",
+        "loc": 1,
+        "reasons": [
+          "file not reached by BFS from any page",
+          "no JSX usage in project"
+        ]
+      },
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx#OldLogo",
+        "name": "OldLogo",
+        "file": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx",
+        "loc": 1,
+        "reasons": [
+          "file not reached by BFS from any page"
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "totalLOC": 21,
+    "totalBlankLOC": 8,
+    "totalCommentLOC": 0,
+    "byLanguage": {
+      "ts": {
+        "files": 0,
+        "lines": 0,
+        "code": 0,
+        "blank": 0,
+        "comment": 0
+      },
+      "tsx": {
+        "files": 7,
+        "lines": 19,
+        "code": 12,
+        "blank": 7,
+        "comment": 0
+      },
+      "js": {
+        "files": 1,
+        "lines": 2,
+        "code": 1,
+        "blank": 1,
+        "comment": 0
+      },
+      "jsx": {
+        "files": 0,
+        "lines": 0,
+        "code": 0,
+        "blank": 0,
+        "comment": 0
+      }
+    },
+    "perComponent": [
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/DashboardCard.tsx#DashboardCard",
+        "loc": 1,
+        "blank": 0,
+        "comment": 0
+      },
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Header.tsx#Header",
+        "loc": 1,
+        "blank": 0,
+        "comment": 0
+      },
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/components/Logo.tsx#Logo",
+        "loc": 1,
+        "blank": 0,
+        "comment": 0
+      },
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldHeader.tsx#OldHeader",
+        "loc": 1,
+        "blank": 0,
+        "comment": 0
+      },
+      {
+        "id": "/home/chintan/Projects/personal/opensource/react-xray/test/fixtures/e2e/next-app/src/legacy/OldLogo.tsx#OldLogo",
+        "loc": 1,
+        "blank": 0,
+        "comment": 0
+      }
+    ]
+  },
+  "warnings": []
+}

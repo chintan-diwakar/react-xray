@@ -1,83 +1,103 @@
 import { globby } from "globby";
-import { relative } from "node:path";
+import { relative, resolve } from "node:path";
 import type { Framework, PageEntry } from "../types.js";
 
-const APP_PAGE_GLOBS = ["app/**/page.{js,jsx,ts,tsx}"];
+const APP_PAGE_GLOBS = ["**/page.{js,jsx,ts,tsx}"];
 const APP_SPECIAL_GLOBS = [
-  "app/**/layout.{js,jsx,ts,tsx}",
-  "app/**/template.{js,jsx,ts,tsx}",
-  "app/**/error.{js,jsx,ts,tsx}",
-  "app/**/global-error.{js,jsx,ts,tsx}",
-  "app/**/not-found.{js,jsx,ts,tsx}",
-  "app/**/loading.{js,jsx,ts,tsx}",
-  "app/**/default.{js,jsx,ts,tsx}",
+  "**/layout.{js,jsx,ts,tsx}",
+  "**/template.{js,jsx,ts,tsx}",
+  "**/error.{js,jsx,ts,tsx}",
+  "**/global-error.{js,jsx,ts,tsx}",
+  "**/not-found.{js,jsx,ts,tsx}",
+  "**/loading.{js,jsx,ts,tsx}",
+  "**/default.{js,jsx,ts,tsx}",
 ];
-const APP_EXCLUDE = ["app/**/route.{js,ts}"];
-const PAGES_ROUTER_GLOBS = ["pages/**/*.{js,jsx,ts,tsx}"];
+const APP_EXCLUDE = ["**/route.{js,ts}"];
+const PAGES_ROUTER_GLOBS = ["**/*.{js,jsx,ts,tsx}"];
 const PAGES_ROUTER_EXCLUDE = [
-  "pages/_app.{js,jsx,ts,tsx}",
-  "pages/_document.{js,jsx,ts,tsx}",
-  "pages/_error.{js,jsx,ts,tsx}",
-  "pages/api/**",
+  "_app.{js,jsx,ts,tsx}",
+  "_document.{js,jsx,ts,tsx}",
+  "_error.{js,jsx,ts,tsx}",
+  "api/**",
 ];
 
-function routeFromAppFile(rel: string): string {
-  // app/dashboard/(group)/page.tsx → /dashboard
-  // app/page.tsx → /
-  const trimmed = rel.replace(/\\/g, "/").replace(/^app\//, "").replace(/(^|\/)page\.[jt]sx?$/, "");
+function routeFromAppFile(relFromAppDir: string): string {
+  // dashboard/(group)/page.tsx → /dashboard
+  // page.tsx → /
+  const trimmed = relFromAppDir
+    .replace(/\\/g, "/")
+    .replace(/(^|\/)page\.[jt]sx?$/, "");
   const cleaned = trimmed
     .split("/")
+    .filter((seg) => seg !== "")
     .filter((seg) => !/^\(.+\)$/.test(seg)) // route groups
-    .filter((seg) => !/^@/.test(seg))       // parallel routes
+    .filter((seg) => !/^@/.test(seg)) // parallel routes
     .join("/");
   return cleaned === "" ? "/" : "/" + cleaned;
 }
 
-function routeFromPagesFile(rel: string): string {
-  const trimmed = rel.replace(/\\/g, "/").replace(/^pages\//, "").replace(/\.[jt]sx?$/, "");
+function routeFromPagesFile(relFromPagesDir: string): string {
+  const trimmed = relFromPagesDir.replace(/\\/g, "/").replace(/\.[jt]sx?$/, "");
   return trimmed === "index" ? "/" : "/" + trimmed.replace(/\/index$/, "");
 }
 
 export async function collectPages(
   rootDir: string,
   framework: Framework,
+  appDir: string | null,
+  pagesDir: string | null,
 ): Promise<{ pages: PageEntry[]; roots: string[] }> {
   const pages: PageEntry[] = [];
   const roots: string[] = [];
 
-  if (framework === "next-app" || framework === "next-mixed") {
-    const appFiles = await globby(APP_PAGE_GLOBS, { cwd: rootDir, absolute: true, ignore: APP_EXCLUDE });
+  if ((framework === "next-app" || framework === "next-mixed") && appDir) {
+    const appFiles = await globby(APP_PAGE_GLOBS, {
+      cwd: appDir,
+      absolute: true,
+      ignore: APP_EXCLUDE,
+    });
     for (const file of appFiles) {
-      const rel = relative(rootDir, file);
+      const absFile = resolve(file);
+      const relFromApp = relative(appDir, absFile);
+      const relFromRoot = relative(rootDir, absFile);
       pages.push({
-        id: rel,
-        file,
-        route: routeFromAppFile(rel),
+        id: relFromRoot,
+        file: absFile,
+        route: routeFromAppFile(relFromApp),
         framework: "next-app",
         isSpecialFile: false,
       });
-      roots.push(file);
+      roots.push(absFile);
     }
-    const specialFiles = await globby(APP_SPECIAL_GLOBS, { cwd: rootDir, absolute: true, ignore: APP_EXCLUDE });
-    for (const file of specialFiles) roots.push(file);
+    const specialFiles = await globby(APP_SPECIAL_GLOBS, {
+      cwd: appDir,
+      absolute: true,
+      ignore: APP_EXCLUDE,
+    });
+    for (const file of specialFiles) roots.push(resolve(file));
   }
 
-  if (framework === "next-pages" || framework === "next-mixed") {
+  if (
+    (framework === "next-pages" || framework === "next-mixed") &&
+    pagesDir
+  ) {
     const pageFiles = await globby(PAGES_ROUTER_GLOBS, {
-      cwd: rootDir,
+      cwd: pagesDir,
       absolute: true,
       ignore: PAGES_ROUTER_EXCLUDE,
     });
     for (const file of pageFiles) {
-      const rel = relative(rootDir, file);
+      const absFile = resolve(file);
+      const relFromPages = relative(pagesDir, absFile);
+      const relFromRoot = relative(rootDir, absFile);
       pages.push({
-        id: rel,
-        file,
-        route: routeFromPagesFile(rel),
+        id: relFromRoot,
+        file: absFile,
+        route: routeFromPagesFile(relFromPages),
         framework: "next-pages",
         isSpecialFile: false,
       });
-      roots.push(file);
+      roots.push(absFile);
     }
   }
 
