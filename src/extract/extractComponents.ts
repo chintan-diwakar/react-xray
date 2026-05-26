@@ -72,6 +72,14 @@ export function extractComponents(file: string, ast: Node): ComponentDef[] {
           containsJSX(init.body)
         ) {
           push(name, decl, "arrow", exportKind);
+          continue;
+        }
+        // Factory pattern: const Foo = <CallExpression>(...);
+        // We accept any call expression (styled.button``, createX(), memo(...), forwardRef(...), lazy(() => ...))
+        // to cover styled-components / emotion / vanilla-extract / React wrappers without false-negative.
+        if (init.type === "CallExpression" || init.type === "TaggedTemplateExpression") {
+          push(name, decl, "factory", exportKind);
+          continue;
         }
       }
     }
