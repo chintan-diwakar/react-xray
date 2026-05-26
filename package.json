@@ -15,7 +15,7 @@
   "bin": {
     "react-xray": "./bin/react-xray"
   },
-  "files": ["dist", "bin", "README.md", "LICENSE"],
+  "files": ["dist", "bin", "assets", "README.md", "LICENSE", "CHANGELOG.md"],
   "engines": { "node": ">=18" },
   "scripts": {
     "build": "tsup",
