@@ -98,3 +98,57 @@ test("detects default-export arrow with filename PascalCase", async () => {
   `);
   expect(defs[0]?.name).toBe("Bar");
 });
+
+test("skips next/font/local factory (localFont) as non-component", async () => {
+  const defs = await components("layout.tsx", `
+    import localFont from "next/font/local";
+    const Satoshi = localFont({ src: "./satoshi.woff2", variable: "--font-satoshi" });
+    export default function Layout({ children }) { return <body className={Satoshi.className}>{children}</body>; }
+  `);
+  expect(defs.find((d) => d.name === "Satoshi")).toBeUndefined();
+});
+
+test("skips next/font/google factories (Inter, Geist, etc.) as non-components", async () => {
+  const defs = await components("layout.tsx", `
+    import { Inter, Geist_Mono } from "next/font/google";
+    const Primary = Inter({ subsets: ["latin"] });
+    const Mono = Geist_Mono({ subsets: ["latin"] });
+    export const Header = () => <header className={Primary.className}/>;
+  `);
+  expect(defs.map((d) => d.name).sort()).toEqual(["Header"]);
+});
+
+test("skips cva (class-variance-authority) factory as non-component", async () => {
+  const defs = await components("buttonStyles.ts", `
+    import { cva } from "class-variance-authority";
+    export const ButtonVariants = cva("inline-flex", { variants: { size: { sm: "px-2", lg: "px-4" } } });
+  `);
+  expect(defs.find((d) => d.name === "ButtonVariants")).toBeUndefined();
+});
+
+test("skips createContext as non-component", async () => {
+  const defs = await components("ThemeContext.tsx", `
+    import { createContext } from "react";
+    export const ThemeContext = createContext({ theme: "light" });
+  `);
+  expect(defs.find((d) => d.name === "ThemeContext")).toBeUndefined();
+});
+
+test("skips zod schema (z.object) as non-component", async () => {
+  const defs = await components("schema.ts", `
+    import { z } from "zod";
+    export const UserSchema = z.object({ name: z.string() });
+  `);
+  expect(defs.find((d) => d.name === "UserSchema")).toBeUndefined();
+});
+
+test("still detects real factory components (forwardRef, styled.button)", async () => {
+  // Regression check: the denylist must not break legitimate factory detection
+  const defs = await components("Btn.tsx", `
+    import styled from "styled-components";
+    import { forwardRef } from "react";
+    export const Btn = styled.button\`color: red\`;
+    export const Wrapper = forwardRef((props, ref) => <div ref={ref}/>);
+  `);
+  expect(defs.map((d) => d.name).sort()).toEqual(["Btn", "Wrapper"]);
+});
